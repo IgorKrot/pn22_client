@@ -7,8 +7,8 @@ function Pagination () {
 
    const dispatch = useDispatch();
 
-   const leftPagination = () => {dispatch(setPaginationNumber(paginationNumber >= 1 ? (paginationNumber - 1) : paginationNumber))};
-   const rightPagination = () => {dispatch(setPaginationNumber(paginationNumber < (listPagination.length - 1) ? (paginationNumber + 1) : paginationNumber))};
+   const leftPagination = () => {dispatch(setPaginationNumber(paginationNumber > 1 ? (paginationNumber - 1) : paginationNumber))};
+   const rightPagination = () => {dispatch(setPaginationNumber(paginationNumber < listPagination.length ? (paginationNumber + 1) : paginationNumber))};
 
    return ( 
       <div className="pagination">
@@ -18,7 +18,7 @@ function Pagination () {
                <div className="pagination_arrow_left_img"></div>
             </div>
             {listPagination.map((paginationNumber, i) =>
-               <div className="pagination_element" key={i} onClick={() => dispatch(setPaginationNumber(i))}>
+               <div className="pagination_element" key={i} onClick={() => dispatch(setPaginationNumber(i + 1))}>
                   <div className="pagination_element_text">{listPagination[i]}</div>
                </div>
             )}

@@ -8,14 +8,15 @@ import {useSelector} from 'react-redux'
 import {Link, useNavigate} from "react-router-dom";
 
 function Articles () {
-   const {articles} = useSelector((state) => state.categoryData);
+   const {articles, paginationNumber} = useSelector((state) => state.categoryData);
+
    const navigate = useNavigate();
 
    return ( 
       <main className="articles">
-         {articles.length ?
+         {articles ?
          <article className="articles_container">
-            {articles.map((articleName, i) => 
+            {articles.slice(paginationNumber * 8 - 8, paginationNumber * 8).map((articleName, i) => 
             <section className="articles_section" key={i} data-testid="articles">
                <Link key={articleName.id} to={`/articlepage/${articleName.id}`}>
                   <div className="articles_section_head">

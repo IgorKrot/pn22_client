@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
 export const getArticles = createAsyncThunk("articles/getArticlesStatus", async(params, {dispatch}) => {
-   const {category, paginationNumber, searchQuery, sort} = params;
+   const {category, searchQuery, sort} = params;
    try {
-      const { data } = await axios.get(`https://62bef7450bc9b1256164277e.mockapi.io/p22_articles?${searchQuery === "" ? `category=${category}` : ""}&page=${paginationNumber}&${searchQuery ? `&search=${searchQuery}` : ""}`);
+      const { data } = await axios.get(`https://62bef7450bc9b1256164277e.mockapi.io/p22_articles?${searchQuery === "" ? `category=${category}` : ""}&${searchQuery ? `&search=${searchQuery}` : ""}`);
       let dataPagination = Array((Math.ceil(data.length/8))).fill(0).map((num, i) => num = i + 1);
       dispatch(setlistPagination(dataPagination));
       return data
@@ -19,7 +19,7 @@ const initialState = {
    category: 0,
    sort: 0,
    listPagination: [],
-   paginationNumber: 0,
+   paginationNumber: 1,
    searchQuery: "",
    searchValue: "",
    // like: false,

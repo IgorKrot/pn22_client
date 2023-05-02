@@ -15,6 +15,7 @@
       width: 70%;
       left: 15%;
    }
+   
    .welcomModal_container {
       .welcomModal_title {
          padding: 5px;
@@ -24,6 +25,9 @@
             font-size: 2em;
             width: 70%;
             margin: 0 auto;
+            @media (max-width: 440px) {
+               font-size: 1.2em;
+            }
          }
          .welcomModal_close {
             position: absolute;
@@ -48,6 +52,10 @@
             -23px 0 20px -23px rgba(0, 0, 0, .6),
             23px 0 20px -23px rgba(0, 0, 0, .6),
             inset 0 0 40px rgba(0, 0, 0, .1);
+            @media (max-width: 440px) {
+               width: 120px;
+               height: 150px;
+            }
          }
       }
       .welcomModal_description {
@@ -56,6 +64,9 @@
             text-align: center;
             font-weight: 500;
             font-size: 1.5em;
+            @media (max-width: 440px) {
+               font-size: 1.2em;
+            }
          }
       }
    }
