@@ -11,14 +11,13 @@ function FormReg () {
    const [errorPassword, setErrorPassword] = useState("");
 
    const {password, email, isLogin, isReg} = useSelector((state) => state.userdata);
-console.log(errorEmail)
-   const onSubmit = (e) => {
+
+   const sendForm = (e) => {
       setErrorEmail("")
       setErrorPassword("")
       if (validateRegInputs(email, password, setErrorEmail, setErrorPassword)) {
       dispatch(getUserData({email, password, isReg}));
       e.preventDefault();
-      console.log("validateRegInputs")
       }
    }
 
@@ -47,7 +46,7 @@ console.log(errorEmail)
                   <label htmlFor="formLogin_setting_check1">remember me pleace</label>
             </div>
             <div className="formLogin_button">
-               <div className="formLogin_button_text" onClick={onSubmit}>Go Reg</div>
+               <div className="formLogin_button_text" onClick={sendForm}>Go Reg</div>
             </div>
          </div>
       </div>

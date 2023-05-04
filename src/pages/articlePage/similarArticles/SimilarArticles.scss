@@ -18,12 +18,12 @@
    .similarArticles_articles_wrap {
       display: flex;
       justify-content: space-between;
-      @media (max-width: 769px) { 
+      @media (max-width: 1080px) { 
          flex-wrap: wrap;
          justify-content: center;
       }
       .similarArticles_article{
-         margin: 0 10px 0 10px;
+         margin: 5px 10px 0 10px;
          width: 200px;
          @media (max-width: 769px) { 
             width: 400px;

@@ -1,11 +1,21 @@
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import HelmetComponent from "../../commonComponents/helmet/HelmetComponent"
+import {validateSupportInputs} from "../../utils/validate/validateSupportInputs"
 
 import {useNavigate} from "react-router-dom";
+import {useState} from 'react';
 
 function Support () {
    let navigate = useNavigate();
+   const [supportEmail, setSupportEmail] = useState("");
+   const [supportMessage, setSupportMessage] = useState("");
+   const [errorEmail, setErrorEmail] = useState("");
+   const [errorMessage, setErrorMessage] = useState("");
    
+   const sendForm = () => {
+      if (validateSupportInputs(supportEmail, setErrorEmail, supportMessage, setErrorMessage)) {
+      }
+   }
    return ( 
       <>
          <HelmetComponent title="Support" />
@@ -29,10 +39,12 @@ function Support () {
                         <div className="support_form_title_text">Send me a massage</div>
                      </div>
                      <div className="contact_form_body">
-                        <input type="text" className="contact_form_input_email" placeholder="entry your email"></input>
-                        <textarea type="text" className="contact_form_input_text" placeholder="entry your massage"></textarea>
+                        <input type="text" className="contact_form_input_email" placeholder="entry your email" value={supportEmail} onChange={(e) => setSupportEmail(e.target.value)}></input>
+                        {errorEmail ? <div className='contact_form_error'>{errorEmail}</div> : null}
+                        <textarea type="text" className="contact_form_input_text" placeholder="entry your massage" value={supportMessage} onChange={(e) => setSupportMessage(e.target.value)}></textarea>
+                        {errorMessage ? <div className='contact_form_error'>{errorMessage}</div> : null}
                         <div className="contact_form_button">
-                           <div className="contact_form_button_text">send</div>
+                           <div className="contact_form_button_text" onClick={sendForm}>send</div>
                         </div>
                      </div>
                   </div>

@@ -1,13 +1,13 @@
-export function validateContactsInputs(contactsEmail, setErrorEmail, contactsMessage, setErrorMessage) {
+export function validateSupportInputs(supportEmail, setErrorEmail, supportMessage, setErrorMessage) {
     const regExpEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (Boolean(contactsEmail) === false) {
+    
+    if (Boolean(supportEmail) === false) {
         setErrorEmail("Please, enter email");
     } else
-    if (!regExpEmail.test(String(contactsEmail).toLowerCase())) {
+    if (!regExpEmail.test(String(supportEmail).toLowerCase())) {
         setErrorEmail("Enter email like a test@gmail.com");
     } else 
-    if (!contactsMessage) {
+    if (!supportMessage) {
         setErrorMessage("Please write your message");
     } else {
         setErrorEmail("");

@@ -3,12 +3,22 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import HelmetComponent from "../../commonComponents/helmet/HelmetComponent"
+import {validateContactsInputs} from "../../utils/validate/validateContactsInputs"
 
 import {useNavigate} from "react-router-dom";
+import {useState} from 'react';
 
 function Contacts () {
    let navigate = useNavigate();
+   const [contactsEmail, setContactsEmail] = useState("");
+   const [contactsMessage, setContactsMessage] = useState("");
+   const [errorEmail, setErrorEmail] = useState("");
+   const [errorMessage, setErrorMessage] = useState("");
 
+   const sendForm = () => {
+      if (validateContactsInputs(contactsEmail, setErrorEmail, contactsMessage, setErrorMessage)) {
+      }
+   }
    return ( 
       <>
          <HelmetComponent title="Account" />
@@ -28,10 +38,12 @@ function Contacts () {
                         <div className="contacts_form_title_text">Send me a massage</div>
                      </div>
                      <div className="contact_form_body">
-                        <input type="text" className="contact_form_input_email" placeholder="entry your email"></input>
-                        <textarea type="text" className="contact_form_input_text" placeholder="entry your massage"></textarea>
+                        <input type="text" className="contact_form_input_email" placeholder="entry your email" value={contactsEmail} onChange={(e) => setContactsEmail(e.target.value)}></input>
+                        {errorEmail ? <div className='contact_form_error'>{errorEmail}</div> : null}
+                        <textarea type="text" className="contact_form_input_text" placeholder="entry your massage" value={contactsMessage} onChange={(e) => setContactsMessage(e.target.value)}></textarea>
+                        {errorMessage ? <div className='contact_form_error'>{errorMessage}</div> : null}
                         <div className="contact_form_button">
-                           <div className="contact_form_button_text">send</div>
+                           <div className="contact_form_button_text" onClick={sendForm}>send</div>
                         </div>
                      </div>
                   </form>

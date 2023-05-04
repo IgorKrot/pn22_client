@@ -55,7 +55,13 @@
    .contact_form_body {
       margin: 10px 0 0 0;
    }
+   .contact_form_error {
+      width: 50%;
+      height: 20px;
+      margin: 0 auto;
+   }
    .contact_form_input_email {
+      text-indent: 5px;
       width: 50%;
       height: 20px;
       margin: 0 auto;
@@ -70,9 +76,10 @@
          width: 60%;}
    }
    .contact_form_input_text {
+      text-indent: 5px;
       width: 50%;
       height: 60px;
-      margin: 10px auto;
+      margin: 5px auto;
       display: block;
       border: 1px solid #313131;
       background-color: white;
